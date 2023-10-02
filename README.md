@@ -19,6 +19,16 @@ To get started, you need to pull the Docker image from Docker Hub:
 sudo docker pull nathanhall762/mysql
 ```
 
+### Running the MySQL Container
+
+After pulling the image, you can run the MySQL container using the following command:
+
+```bash
+sudo docker run --name MySQL -e MYSQL_ROOT_PASSWORD=password -d nathanhall762/mysql
+```
+
+This command will run the MySQL container with the root password set as `password`.
+
 ### Initial Setup After Pulling the Docker Image
 
 Once you've pulled the Docker image and started the MySQL container, you'll want to first access the MySQL shell within the container. This is an essential step before executing any other scripts that interact with the database. Follow these steps:
@@ -51,16 +61,6 @@ exit
 ```
 
 After performing this initial setup, you can run the provided scripts without needing to manually enter the MySQL container's shell.
-
-### Running the MySQL Container
-
-After pulling the image, you can run the MySQL container using the following command:
-
-```bash
-sudo docker run --name MySQL -e MYSQL_ROOT_PASSWORD=password -d nathanhall762/mysql
-```
-
-This command will run the MySQL container with the root password set as `my-secret-pw`.
 
 ### Interacting with the MySQL Container
 
