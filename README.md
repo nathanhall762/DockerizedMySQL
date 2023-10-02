@@ -23,28 +23,28 @@ sudo docker pull nathanhall762/mysql
 
 Once you've pulled the Docker image and started the MySQL container, you'll want to first access the MySQL shell within the container. This is an essential step before executing any other scripts that interact with the database. Follow these steps:
 
-    Enter the running MySQL container's shell:
+1. Enter the running MySQL container's shell:
 
 ```bash
 sudo docker exec -it MySQL bash
 ```
 
-    Start the MySQL client:
+2. Start the MySQL client:
 
 ```bash
 mysql -uroot -p
 ```
 
-    When prompted, enter the root password (password).
+3. When prompted, enter the root password (password).
 
-    You will now be in the MySQL monitor. From here, you can execute SQL commands, manage databases, etc.
+You will now be in the MySQL monitor. From here, you can execute SQL commands, manage databases, etc.
 
-    To exit the MySQL monitor, simply type:
+4. To exit the MySQL monitor, simply type:
 
 ```bash
 exit
 ```
-    To exit the container's shell, just type:
+5. To exit the container's shell, just type:
 
 ```bash
 exit
