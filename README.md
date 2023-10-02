@@ -66,7 +66,7 @@ After performing this initial setup, you can run the provided scripts without ne
 
 There are two primary scripts to interact with the running MySQL container:
 
-1. `addData.sh`: This script takes a SQL script file as an argument, copies the SQL script file into the container, and then executes it inside the container to add data to the MySQL database.
+1. `mySQLScript.sh`: This script takes a SQL script file as an argument, copies the SQL script file into the container, and then executes it inside the container to add data to the MySQL database.
 2. `mySQLCommand.sh`: This script allows you to run SQL commands directly on the running MySQL container.
 
 ## Usage
@@ -76,7 +76,7 @@ There are two primary scripts to interact with the running MySQL container:
 To add data to the MySQL database, execute:
 
 ```bash
-./addData.sh
+./mySQLScript.sh YOUR_SQL_SCRIPT_FILE_PATH.sql
 ```
 
 ### Running SQL Commands
