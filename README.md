@@ -1,82 +1,88 @@
 
-# Dockerized MySQL with Utility Scripts
+# MySQL Docker Project
 
-This repository contains utility scripts to manage a Dockerized MySQL instance, import/export the Docker image, and run SQL commands or scripts against the MySQL container.
+This repository contains scripts and files to set up and interact with a MySQL Docker container.
 
-## Pre-requisites
+## Prerequisites
 
 - Docker installed on your machine.
-- Git (to clone the repository).
+- Docker CLI knowledge.
+- Basic understanding of bash scripts.
 
-## Setup
+## Getting Started
 
-1. **Clone the Repository**:
+### Pulling the Docker Image
 
-    ```bash
-    git clone [REPO_URL]
-    cd [REPO_NAME]
-    ```
+To get started, you need to pull the Docker image from Docker Hub:
 
-2. **Import Docker Image**:
+```bash
+sudo docker pull nathanhall762/mysql
+```
 
-    If you have the exported Docker image tar file (`mysql_image.tar`) in the repository, you can import it using:
+### Running the MySQL Container
 
-    ```bash
-    ./dockerImport.sh
-    ```
+After pulling the image, you can run the MySQL container using the following command:
 
-    This will load the Docker image into your local Docker environment.
+```bash
+sudo docker run --name MySQL -e MYSQL_ROOT_PASSWORD=my-secret-pw -d nathanhall762/mysql
+```
 
-3. **Run the MySQL Container**:
+This command will run the MySQL container with the root password set as `my-secret-pw`.
 
-    Use Docker commands to run the MySQL container. Example:
+### Interacting with the MySQL Container
 
-    ```bash
-    docker run --name MySQL -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
-    ```
+There are two primary scripts to interact with the running MySQL container:
 
-## Utility Scripts
+1. `addData.sh`: This script copies a SQL script (`exampleAddData.sql`) into the container and then executes it inside the container to add data to the MySQL database.
+2. `mySQLCommand.sh`: This script allows you to run SQL commands directly on the running MySQL container.
 
-1. **addData.sh**:
+### Importing and Exporting Docker Images
 
-    Use this script to run the SQL script (`exampleAddData.sql`) inside the MySQL container.
+If you want to import or export the Docker image for backup or sharing purposes, there are two scripts provided:
 
-    ```bash
-    ./addData.sh
-    ```
+1. `dockerExport.sh`: This script exports the current MySQL Docker image into a `.tar` file.
+2. `dockerImport.sh`: This script imports the MySQL Docker image from a `.tar` file.
 
-2. **mySQLCommand.sh**:
+## Usage
 
-    Use this script to run arbitrary SQL commands against the MySQL container. Replace `YOUR_SQL_COMMAND` with the desired SQL command.
+### Adding Data
 
-    ```bash
-    ./mySQLCommand.sh "YOUR_SQL_COMMAND"
-    ```
+To add data to the MySQL database, execute:
 
-    Example:
+```bash
+./addData.sh
+```
 
-    ```bash
-    ./mySQLCommand.sh "SHOW DATABASES;"
-    ```
+### Running SQL Commands
 
-3. **dockerExport.sh**:
+To run SQL commands on the MySQL container, use:
 
-    This script exports the Docker image of your MySQL container to a tar file (`mysql_image.tar`).
+```bash
+./mySQLCommand.sh "YOUR_SQL_COMMAND_HERE"
+```
 
-    ```bash
-    ./dockerExport.sh
-    ```
+Replace `YOUR_SQL_COMMAND_HERE` with your desired SQL command.
 
-4. **dockerImport.sh**:
+### Exporting the Docker Image
 
-    This script imports the Docker image from the tar file (`mysql_image.tar`) into your local Docker environment.
+To export the Docker image, run:
 
-    ```bash
-    ./dockerImport.sh
-    ```
+```bash
+./dockerExport.sh
+```
 
-## Notes
+### Importing the Docker Image
 
-- Ensure all scripts have executable permissions (`chmod +x script_name.sh`).
-- Modify the scripts as needed to suit your specific environment or configuration.
-- Always ensure you're working with the correct Docker container and image names.
+To import a Docker image, first place the `.tar` file in the project directory and then run:
+
+```bash
+./dockerImport.sh
+```
+
+## Contribute
+
+Feel free to fork, clone, and submit PRs. Any contributions, enhancements, or bug-fixes are welcome.
+
+## License
+
+[MIT](LICENSE)
