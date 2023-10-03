@@ -24,7 +24,7 @@ sudo docker pull nathanhall762/mysql
 After pulling the image, you can run the MySQL container using the following command:
 
 ```bash
-sudo docker run --name MySQL -e MYSQL_ROOT_PASSWORD=password -d nathanhall762/mysql
+sudo docker run --name MySQL -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
 ```
 
 This command will run the MySQL container with the root password set as `password`.
@@ -61,6 +61,28 @@ exit
 ```
 
 After performing this initial setup, you can run the provided scripts without needing to manually enter the MySQL container's shell.
+
+### Exporting and Importing Volume Data
+
+To ensure data persistence and share your database state with others, you can export and import the volume data where the database stores its files.
+Exporting the Volume
+
+To create a tar archive of your volume data, execute:
+
+```bash
+./volumeExport.sh
+```
+
+This will create a file named mysql_data_volume.tar.
+Importing the Volume
+
+To import data into your volume from a tar archive, execute:
+
+```bash
+./volumeImport.sh
+```
+
+Make sure the mysql_data_volume.tar file is in the current directory when you run the script.
 
 ### Interacting with the MySQL Container
 
